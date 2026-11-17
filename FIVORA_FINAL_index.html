@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FIVORA creates thoughtfully designed digital planners, journals, learning resources and productivity tools.">
+  <meta name="theme-color" content="#f3f4ed">
+  <title>FIVORA | Digital Tools for a Better Everyday</title>
+  <style>
+    :root{--ink:#293b31;--muted:#66736a;--green:#344e40;--sage:#e9ede4;--cream:#fbfaf6;--paper:#fffefa;--clay:#a87856;--line:#e5e6dc}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:85px}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.7}
+    a{color:inherit}
+    .topbar{height:76px;padding:0 max(6%,calc((100% - 1180px)/2));display:flex;align-items:center;justify-content:space-between;background:rgba(251,250,246,.97);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+    .brand{font-family:Georgia,serif;font-size:29px;font-weight:bold;letter-spacing:1px;text-decoration:none;color:var(--green)}
+    .brand span{color:var(--clay)}
+    nav{display:flex;align-items:center;gap:27px}
+    nav a{text-decoration:none;font-size:13px;color:#56645a}
+    nav a:hover{color:var(--clay)}
+    .menu{display:none;border:0;background:none;font-size:25px;color:var(--green)}
+    .hero{background:var(--sage);padding:88px max(7%,calc((100% - 1120px)/2));display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:center;min-height:550px}
+    .eyebrow{font-size:10px;font-weight:bold;letter-spacing:2.3px;color:#92765d}
+    h1,h2,h3{font-family:Georgia,'Times New Roman',serif}
+    h1{font-size:clamp(47px,6vw,75px);line-height:1.08;margin:18px 0;color:var(--green)}
+    h1 em{font-weight:normal;color:var(--clay)}
+    .hero-copy>p:not(.eyebrow){max-width:490px;color:var(--muted);font-size:17px}
+    .button{display:inline-block;margin-top:19px;background:var(--green);color:white;text-decoration:none;padding:13px 21px;font-size:13px;border-radius:2px}
+    .button:hover{background:#24392d}
+    .art{height:345px;position:relative;display:grid;place-items:center}
+    .orb{position:absolute;width:285px;height:285px;border-radius:50%;background:#d8e0d1}
+    .planner{position:relative;width:235px;min-height:285px;background:#fffdf7;box-shadow:12px 18px 40px #344e4020;padding:30px;transform:rotate(-4deg);z-index:1}
+    .planner small{letter-spacing:2px;color:#9b8069;font-size:9px}
+    .planner h2{font-size:37px;line-height:1.1;color:#405648;margin:22px 0}
+    .planner hr{border:0;border-top:1px solid #dfe3da;margin:18px 0}
+    .planner p{font-size:11px;color:#69766b;margin:13px 0}
+    .art-caption{position:absolute;bottom:0;right:10%;font-size:10px;letter-spacing:2px;color:#68786a}
+    .section{padding:82px max(7%,calc((100% - 1120px)/2))}
+    .intro{text-align:center;max-width:900px;margin:auto}
+    h2{font-size:clamp(31px,4vw,43px);line-height:1.2;margin:12px 0 18px;color:var(--green)}
+    .intro>p:last-child{max-width:700px;margin:auto;color:var(--muted)}
+    .soft{background:#f3f2ec}
+    .section-lead{max-width:650px;color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+    .card{background:var(--paper);border:1px solid var(--line);padding:24px 21px;min-height:210px}
+    .card b{color:var(--clay);font-size:12px}
+    .card h3{font-size:21px;margin:14px 0 8px}
+    .card p{font-size:13px;color:var(--muted);margin:0}
+    .note{font-size:12px;color:#8a765f;margin-top:22px}
+    .about{display:grid;grid-template-columns:.7fr 1.3fr;gap:65px;align-items:center}
+    .monogram{width:190px;height:190px;border-radius:50%;background:#e7eae0;display:grid;place-items:center;margin:auto;font: bold 70px Georgia,serif;color:#526a57}
+    .about p:not(.eyebrow){color:var(--muted)}
+    .values{background:var(--green);color:white}
+    .values h2{color:white}
+    .values .eyebrow{color:#d6b89c}
+    .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:35px}
+    .value{border-top:1px solid #728274;padding-top:16px}
+    .value b{color:#d6b89c;font-size:12px}
+    .value h3{font-size:22px;margin:8px 0;color:white}
+    .value p{font-size:14px;color:#d7dfd7;margin:0}
+    .policy{max-width:1000px}
+    .policy h3{font-size:19px;margin:27px 0 6px}
+    .policy p,.policy li{font-size:14px;color:#56645a}
+    .policy ul{padding-left:23px}
+    .policy .updated{font-size:12px;color:#8a765f}
+    .contact{text-align:center}
+    .contact p{color:var(--muted)}
+    .email{display:inline-block;color:#956b4e;font-weight:bold;text-decoration:none;margin-top:7px}
+    footer{background:#263c30;color:#e9eee8;padding:34px max(7%,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    footer .brand{color:white}
+    footer p,footer small,footer a:not(.brand){font-size:12px;color:#d0d9d0}
+    footer a:not(.brand){text-decoration:none}
+    .footer-links{display:flex;gap:20px}
+    @media(max-width:850px){.cards{grid-template-columns:repeat(2,1fr)}.hero{padding-top:65px}.section{padding-top:68px;padding-bottom:68px}}
+    @media(max-width:620px){.topbar{height:68px;padding:0 6%}.menu{display:block}nav{display:none;position:absolute;top:68px;left:0;right:0;padding:18px 7%;background:var(--cream);border-bottom:1px solid var(--line);align-items:flex-start;flex-direction:column;gap:14px}nav.open{display:flex}.hero{grid-template-columns:1fr;padding:58px 7% 42px;gap:20px}.art{height:285px}.section{padding:60px 7%}.cards,.value-grid{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:30px}.monogram{width:150px;height:150px;font-size:58px}footer{padding:30px 7%;flex-direction:column;text-align:center}.footer-links{justify-content:center}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home">FIVORA<span>.</span></a>
+  <button class="menu" id="menu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <nav id="nav" aria-label="Main navigation">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#collections">What We Create</a><a href="#privacy">Privacy</a><a href="#contact">Contact</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <p class="eyebrow">THOUGHTFUL DIGITAL RESOURCES</p>
+      <h1>Make room for<br><em>everyday growth.</em></h1>
+      <p>Practical digital tools to help you organise, learn, create and move towards your goals.</p>
+      <a class="button" href="#collections">Explore what we create ↗</a>
+    </div>
+    <div class="art" aria-label="Illustration of a digital planner">
+      <div class="orb"></div><div class="planner"><small>A LITTLE MORE</small><h2>clarity<br>&amp; calm</h2><hr><p>✓ &nbsp; Plan with purpose</p><p>✓ &nbsp; Make time to grow</p></div>
+      <div class="art-caption">ORGANISE · LEARN · GROW</div>
+    </div>
+  </section>
+
+  <section class="section intro">
+    <p class="eyebrow">WELCOME TO FIVORA</p>
+    <h2>Useful ideas, thoughtfully made.</h2>
+    <p>FIVORA is a digital-products brand creating practical resources for everyday organisation, learning and personal development. We believe useful tools should feel clear, approachable and easy to use.</p>
+  </section>
+
+  <section class="section soft" id="collections">
+    <p class="eyebrow">OUR COLLECTIONS</p><h2>What we create</h2>
+    <p class="section-lead">Our collection is growing. New resources will appear here as they become available.</p>
+    <div class="cards">
+      <article class="card"><b>01</b><h3>Digital planners</h3><p>Planning pages and organisers for routines, tasks and everyday priorities.</p></article>
+      <article class="card"><b>02</b><h3>Learning resources</h3><p>Printable worksheets, educational activities and study materials.</p></article>
+      <article class="card"><b>03</b><h3>Journals &amp; trackers</h3><p>Simple tools for reflection, habit building and tracking progress.</p></article>
+      <article class="card"><b>04</b><h3>Productivity tools</h3><p>Goal-setting templates and resources to help bring focus to your plans.</p></article>
+    </div>
+    <p class="note">There are no products listed for sale on this website yet. Please check back as the collection develops.</p>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="monogram" aria-hidden="true">F✳</div>
+    <div><p class="eyebrow">A LITTLE ABOUT US</p><h2>Small steps can shape meaningful progress.</h2>
+      <p>FIVORA aims to make digital resources that are practical, considered and accessible. From organising a busy week to supporting a learning goal, we want our tools to help make the next step feel simpler.</p>
+      <p>We are building our collection with care and will share products here as they are ready.</p>
+    </div>
+  </section>
+
+  <section class="section values">
+    <p class="eyebrow">THE FIVORA APPROACH</p><h2>Designed around everyday life.</h2>
+    <div class="value-grid">
+      <div class="value"><b>01</b><h3>Purposeful</h3><p>Resources begin with a practical need.</p></div>
+      <div class="value"><b>02</b><h3>Clear</h3><p>Simple layouts and approachable content.</p></div>
+      <div class="value"><b>03</b><h3>Growing</h3><p>A collection that develops over time.</p></div>
+    </div>
+  </section>
+
+  <section class="section soft" id="privacy">
+    <div class="policy">
+      <p class="eyebrow">YOUR INFORMATION</p><h2>Privacy policy</h2>
+      <p class="updated">Last updated: 17 November 2026</p>
+      <h3>1. Who we are</h3>
+      <p>FIVORA ("we", "our" or "us") is a digital-products brand. This policy explains how we handle information in connection with our website and business operations. For privacy questions, contact <a href="mailto:fivoradigital@gmail.com">fivoradigital@gmail.com</a>.</p>
+
+      <h3>2. Information we may process</h3>
+      <p>This website is an informational website. It does not currently provide customer accounts, checkout, a contact form or an on-site product purchase facility. If you email us, we receive the email address and any information you choose to include in your message.</p>
+      <p>To operate our digital-products business, we may process business information such as product ideas and content, product files and designs, listing descriptions, workflow status, approval responses, Pinterest board and Pin information, and business performance figures that we enter or obtain from supported services. We do not intend to collect customer payment-card details through this website.</p>
+
+      <h3>3. Tools and service providers</h3>
+      <p>FIVORA uses or plans to use the following services for business operations. The exact information processed depends on which integrations are enabled:</p>
+      <ul>
+        <li><strong>n8n:</strong> to run business automation workflows and connect authorised services.</li>
+        <li><strong>Google Drive:</strong> to store generated product files and related business documents.</li>
+        <li><strong>Google Sheets:</strong> to maintain product, workflow and business tracking records.</li>
+        <li><strong>Gmail:</strong> to send business and product-approval emails.</li>
+        <li><strong>Canva:</strong> to create and export product designs and promotional images.</li>
+        <li><strong>Pinterest:</strong> to manage our own authorised business account, boards and promotional Pins.</li>
+      </ul>
+      <p>These providers process information under their own terms and privacy policies. Their services may process information in countries other than the country where you are located. Please review the relevant provider policies for details.</p>
+
+      <h3>4. Pinterest access and publishing</h3>
+      <p>If we connect our Pinterest Business account to FIVORA automation, the workflow may access information needed to manage our own authorised account, such as account or board identifiers and Pin content or status. We use this access for FIVORA's own content management and promotion. We do not intend to access other users' private information or sell Pinterest data. Each Pin must be reviewed and explicitly approved by the account owner before it is published.</p>
+
+      <h3>5. How we use information</h3>
+      <p>We use information to create and manage digital products, prepare product listings and promotional content, operate and troubleshoot workflows, maintain business records, respond to enquiries, and protect the security of our accounts and services.</p>
+
+      <h3>6. Credentials and security</h3>
+      <p>Where supported, service connections use the relevant provider's authorisation process. Credentials and access tokens are intended to be stored in the relevant service's credential-management system, such as n8n credentials, rather than in public website content. We take reasonable steps to limit access and protect business information. No online service or transmission method can be guaranteed completely secure.</p>
+
+      <h3>7. Sharing and sale of information</h3>
+      <p>We do not sell personal information. We may allow the service providers listed above to process information as needed to provide their services to us. We may also disclose information where required by law or to protect our rights, users or services.</p>
+
+      <h3>8. Retention and your choices</h3>
+      <p>We keep business records and information for as long as reasonably necessary for the purposes described in this policy, including operational, security, accounting and legal needs. You may contact us to ask about personal information you have sent directly to us or request correction or deletion. We will consider requests subject to applicable law and legitimate record-keeping requirements. Information held by third-party providers may also need to be managed through those providers.</p>
+
+      <h3>9. Children's privacy</h3>
+      <p>This website is not designed to invite children to submit personal information. We do not knowingly collect personal information from children through this website.</p>
+
+      <h3>10. Changes to this policy</h3>
+      <p>We may update this policy when our website, products, automation or service providers change. We will post the updated policy on this page and revise the date above.</p>
+
+      <h3>11. Contact us</h3>
+      <p>For privacy questions or requests, email <a href="mailto:fivoradigital@gmail.com">fivoradigital@gmail.com</a>.</p>
+      <p class="note">Please note: This policy is a business website draft, not legal advice. Before submitting it for a platform review, FIVORA must verify that every statement matches the services actually connected, the data those services process, the live workflow's approval controls and applicable legal requirements.</p>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <p class="eyebrow">GET IN TOUCH</p><h2>We'd be glad to hear from you.</h2>
+    <p>For business enquiries or questions about FIVORA, email:</p>
+    <a class="email" href="mailto:fivoradigital@gmail.com">fivoradigital@gmail.com</a>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="#home">FIVORA<span>.</span></a>
+  <p>Ideas designed for everyday growth.</p>
+  <div class="footer-links"><a href="#privacy">Privacy Policy</a><a href="#contact">Contact</a></div>
+  <small>© 2026 FIVORA. All rights reserved.</small>
+</footer>
+<script>
+  const menuButton=document.getElementById('menu');
+  const navigation=document.getElementById('nav');
+  menuButton.addEventListener('click',()=>{const isOpen=navigation.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(isOpen));});
+  navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navigation.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));
+</script>
+</body>
+</html>
